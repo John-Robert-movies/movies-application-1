@@ -77,10 +77,11 @@ getMovies().then((movies) => {
 // console.log(peli);
 // addMovies(peli);
 //event listener for the button "Add Movie" that create a movie taking the user inputs
-    $("#agrega").click(function (e) {
-        e.preventDefault();
-        console.log($("#tittle").val());
-        console.log($("#rating").val());
+    $("#adthamovie").click(function () {
+        // e.preventDefault();
+        addMovies(create_movie($("#tittle").val(),
+        $("#rating").val())
+        );
     });
 
 
