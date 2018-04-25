@@ -53,7 +53,7 @@ function  remove_movie(id) {
 //function to create a div with a movie
 function createReport(movie) {
     var htmlMovie=`<tr><td>+${movie.name}+</td><<td>movie.rating</td></tr>`;
-    return htmlMovie
+    return htmlMovie;
 
 }
 
@@ -73,13 +73,14 @@ getMovies().then((movies) => {
     console.log(error);
 });
 
-let peli=create_movie("casa tomada",4);
-console.log(peli);
-addMovies(peli);
+// let peli=create_movie("casa tomada",4);
+// console.log(peli);
+// addMovies(peli);
 //event listener for the button "Add Movie" that create a movie taking the user inputs
-    $("#agrega").click(function () {
-        console.log($("#title"));
-        console.log($("#rating");
+    $("#agrega").click(function (e) {
+        e.preventDefault();
+        console.log($("#tittle").val());
+        console.log($("#rating").val());
     });
 
 
