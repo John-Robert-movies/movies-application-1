@@ -52,7 +52,7 @@ function  remove_movie(id) {
 
 //function to create a div with a movie
 function createReport(movie) {
-    var htmlMovie=`<tr><td>+${movie.name}+</td><<td>movie.rating</td></tr>`;
+    var htmlMovie=`<tr><td>+${movie.name}+</td><<td> movie.rating </td></tr>`;
     return htmlMovie;
 
 }
@@ -66,7 +66,7 @@ getMovies().then((movies) => {
     // console.log(typeof movies);
     console.log('Here are all the movies:');
     movies.forEach(({title, rating, id}) => {
-        $("#cartelera").append(`<tr><td>id#${id}</td><td>${title}</td><td>rating: ${rating}</td></tr><hr>`);
+        $("#cartelera").append(`<tr><td>id#${id}</td><td>${title}</td><td>rating: ${rating}</td><td><input id="checkBox" type="checkbox"></td></tr><hr>`);
     });
 }).catch((error) => {
     alert('Oh no! Something went wrong.\nCheck the console for details.')
@@ -77,7 +77,13 @@ getMovies().then((movies) => {
 // console.log(peli);
 // addMovies(peli);
 //event listener for the button "Add Movie" that create a movie taking the user inputs
-    $("#adthamovie").click(function () {
+    $("#deletemovie").click(function () {
+        // e.preventDefault();
+        removeMovie(remove_movie($("#tittle").val(),
+        $("#rating").val())
+        );
+    });
+$("#adthamovie").click(function () {
         // e.preventDefault();
         addMovies(create_movie($("#tittle").val(),
         $("#rating").val())

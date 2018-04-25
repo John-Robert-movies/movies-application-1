@@ -1,5 +1,7 @@
 html, body {
     height: 100%;
+    background-color: blanchedalmond;
+    font-family: 'Do Hyeon', sans-serif;
 }
 
 .container {
