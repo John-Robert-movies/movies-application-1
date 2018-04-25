@@ -7,10 +7,36 @@
 </head>
 <body>
 
-    <div class="container">
-        <h1>Hello There!</h1>
-        <p>To get started, edit <code>src/index.js</code>.</p>
+    <div class="main">
+        <h1>Movie Rental System</h1>
+        <h2>Current Movies</h2>
+        <div id="cartelera">
+        </div>
+        <div class="optAdd">
+            <form>
+                <label for="tittle">Tittle
+                <input type="text" id="tittle">
+                </label>
+                <label for="rating">Rating
+                    <select id="rating">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </label>
+                </label><br>
+                <button type="submit" class="agrega">Add Movie</button>
+            </form>
+        </div>
+
     </div>
+
+
+
+
+
 
     <script src="/main.js"></script>
 </body>
