@@ -98,7 +98,10 @@ const {getMovies,addMovies,removeMovie} = require('./api.js');
 
     $("#deletemovie").click(function () {
 
-    })
+    });
+
+
+
 
 
 
