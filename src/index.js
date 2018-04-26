@@ -29,66 +29,77 @@ const {getMovies,addMovies,removeMovie} = require('./api.js');
 
 
 
-//create the paremeters for addMovies function from api
-function create_movie(title,rating){
-const movie = {title, rating};
-const options = {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(movie)
-    };
-return options;
-}
-
-//create the paremeters for removeMovies function from api
-function  remove_movie(id) {
-    let url=`/api/movies/+${id}`;
+    //create the paremeters for addMovies function from api
+    function create_movie(title,rating){
+    const movie = {title, rating};
     const options = {
-        method: 'DELETE'
-    };
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(movie)
+        };
+    return options;
+    }
+
+    //create the paremeters for removeMovies function from api
+    function  remove_movie(id) {
+        let url=`/api/movies/+${id}`;
+        const options = {
+            method: 'DELETE'
+        };
+    }
+
+    //function to create a div with a movie
+    function createReport(movie) {
+        var htmlMovie=`<tr><td>+${movie.name}+</td><<td> movie.rating </td></tr>`;
+        return htmlMovie;
+
 }
 
-//function to create a div with a movie
-function createReport(movie) {
-    var htmlMovie=`<tr><td>+${movie.name}+</td><<td> movie.rating </td></tr>`;
-    return htmlMovie;
 
-}
-
-
-
-
-getMovies().then((movies) => {
-    // console.log("viendo que tiene movies");
-    // console.log(movies);
-    // console.log(typeof movies);
-    console.log('Here are all the movies:');
-    movies.forEach(({title, rating, id}) => {
-        $("#cartelera").append(`<tr><td>id#${id}</td><td>${title}</td><td>rating: ${rating}</td><td><input id="checkBox" type="checkbox"></td></tr><hr>`);
+    getMovies().then((movies) =>{
+        console.log('Here are all the movies:');
+        movies.forEach(({title, rating, id}) => {
+            $("#cartelera").append(`<tr><td>${id}</td><td>${title}</td><td>rating: ${rating}</td><td><input class="checkDel" type="checkbox"></td></tr><hr>`);
+        });
+    }).catch((error) => {
+        alert('Oh no! Something went wrong.\nCheck the console for details.')
+        console.log(error);
     });
-}).catch((error) => {
-    alert('Oh no! Something went wrong.\nCheck the console for details.')
-    console.log(error);
-});
 
-// let peli=create_movie("casa tomada",4);
-// console.log(peli);
-// addMovies(peli);
-//event listener for the button "Add Movie" that create a movie taking the user inputs
+
     $("#deletemovie").click(function () {
         // e.preventDefault();
         removeMovie(remove_movie($("#tittle").val(),
         $("#rating").val())
         );
     });
-$("#adthamovie").click(function () {
-        // e.preventDefault();
-        addMovies(create_movie($("#tittle").val(),
-        $("#rating").val())
-        );
+
+    $("#adthamovie").click(function () {
+            // e.preventDefault();
+            addMovies(create_movie($("#tittle").val(),
+            $("#rating").val())
+            );
+        });
+
+
+    //event listener for a checked check button: get the id from the <tr>
+
+    $(".checkDel").click(function () {
+         // if ($(this).is(':checked')){
+           console.log("hi there");
+           // }
+
     });
+
+    //event listener for delete button
+
+
+    $("#deletemovie").click(function () {
+
+    })
+
 
 
 

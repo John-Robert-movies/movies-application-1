@@ -11,13 +11,11 @@ addMovies:(configuration)=>{
         .then(alert("movie vas created"));
 },
 
-removeMovie:(url,configuration)=>{
-    fetch(url,configuration)
+removeMovie:(url,configuration)=>
+{
+    fetch(url, configuration)
         .then(alert("movie was deleted"));
 }
-
-
-
 
 
 };
