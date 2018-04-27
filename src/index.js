@@ -58,23 +58,21 @@ const {getMovies,addMovies,removeMovie} = require('./api.js');
 }
 
 
-    getMovies().then((movies) =>{
-        console.log('Here are all the movies:');
-        movies.forEach(({title, rating, id}) => {
-            $("#cartelera").append(`<tr class="movie"><td class="id">${id}</td><td>${title}</td><td>rating: ${rating}</td><td><input class="checkDel" type="checkbox"></td></tr><hr>`);
-        });
-    }).catch((error) => {
-        alert('Oh no! Something went wrong.\nCheck the console for details.')
-        console.log(error);
-    });
+ function refresh() {
+
+     getMovies().then((movies) => {
+         console.log('Here are all the movies:');
+         movies.forEach(({title, rating, id}) => {
+             $("#cartelera").append(`<tr class="movie"><td class="id">${id}</td><td>${title}</td><td>rating: ${rating}</td><td><input class="checkDel" type="checkbox"></td></tr><hr>`);
+         });
+     }).catch((error) => {
+         alert('Oh no! Something went wrong.\nCheck the console for details.')
+         console.log(error);
+     });
+ }
+ refresh()
 
 
-    $("#deletemovie").click(function () {
-        // e.preventDefault();
-        removeMovie(remove_movie($("#tittle").val(),
-        $("#rating").val())
-        );
-    });
 
     $("#adthamovie").click(function () {
             // e.preventDefault();
@@ -84,16 +82,22 @@ const {getMovies,addMovies,removeMovie} = require('./api.js');
         });
 
 
-    //event listener for a checked check button: get the id from the <tr>
+    //event listener for a checked check button: get the id from the <tr>, this function add movie's id to the empty array to be removed
 
-    $("#cartelera").on('click', '.checkDel', function () {
-         // if ($(this).is(':checked')){
-           console.log("hi there");
-           console.log($(this.siblings()));
+  let toDelete=[];
 
+    $("#cartelera").on('click', '.movie', function () {
+            let miId= this.getElementsByClassName("id")[0].textContent;
+            if(toDelete.indexOf(miId)<=-1){
+                toDelete.push(miId);
+            }
+            else {
+                let index=toDelete.indexOf(miId);
+                toDelete.splice(index,1);
+            }
 
-
-        // }
+           console.log(toDelete)
+       return toDelete;
 
     });
 
@@ -101,6 +105,18 @@ const {getMovies,addMovies,removeMovie} = require('./api.js');
 
 
     $("#deletemovie").click(function () {
+        console.log("this is the final array");
+        toDelete.forEach(function (element) {
+            console.log(element);
+            let url=`/api/movies/${element}`;
+            const options = {
+                method: 'DELETE'
+            };
+            removeMovie(url,options);
+        })
+        toDelete=[];
+        $("#cartelera").html("");
+        refresh();
 
     });
 

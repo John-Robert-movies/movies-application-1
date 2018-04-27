@@ -1,48 +1,23 @@
 {
   "movies": [
     {
-      "title": " Casablanca ",
-      "rating": " 4 ",
-      "id": 1
-    },
-    {
-      "title": " Star Wars: A New Hope",
-      "rating": " 5 ",
-      "id": 2
-    },
-    {
       "title": " The matrix ",
       "rating": 5,
       "id": 4
     },
     {
-      "title": "The matrix",
-      "rating": 5,
-      "id": 5
-    },
-    {
-      "title": "casa tomada",
-      "rating": 4,
-      "id": 6
-    },
-    {
-      "title": "",
-      "rating": "1",
-      "id": 7
-    },
-    {
-      "title": "assadccascscscsacac asascascsac ascascasc ",
+      "title": "gatos locos forever",
       "rating": "1",
       "id": 8
     },
     {
-      "title": "",
-      "rating": "1",
+      "title": "Uzumaki Naruto",
+      "rating": "5",
       "id": 9
     },
     {
       "title": "lalaland",
-      "rating": "4",
+      "rating": "1",
       "id": 10
     }
   ]
