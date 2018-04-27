@@ -8,13 +8,13 @@ module.exports = {
 
 addMovies:(configuration)=>{
     fetch('/api/movies',configuration)
-        .then(alert("movie vas created"));
+
 },
 
 removeMovie:(url,configuration)=>
 {
     fetch(url, configuration)
-        .then(alert("movie was deleted"));
+
 }
 
 
