@@ -3,6 +3,7 @@ html, body {
     background-color: blanchedalmond;
     background-image: url("") ;
     font-family: 'Do Hyeon', sans-serif;
+
 }
 
 .container {
@@ -12,3 +13,21 @@ html, body {
     text-align: center;
 }
 
+
+#cartelera{
+
+}
+
+
+.movie td{
+
+    padding-right: 10px;
+    padding-left: 10px;
+
+}
+
+
+h1,h2{
+
+    padding: 10px;
+}

@@ -1,19 +1,29 @@
 {
   "movies": [
     {
-      "title": " The matrix ",
-      "rating": 5,
-      "id": 4
-    },
-    {
       "title": "Uzumaki Naruto",
       "rating": "5",
       "id": 9
     },
     {
-      "title": "Gatos Amarillos",
-      "rating": "3",
-      "id": 10
+      "title": "life on Mars",
+      "rating": 5,
+      "id": 11
+    },
+    {
+      "title": "The matrix ",
+      "rating": "4",
+      "id": 12
+    },
+    {
+      "title": "Lola goes bad",
+      "rating": "5",
+      "id": 13
+    },
+    {
+      "title": "MAGA!!",
+      "rating": "5",
+      "id": 14
     }
   ]
 }

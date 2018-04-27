@@ -4,32 +4,19 @@
 
 import $ from "jquery";
 
-import sayHello from './hello';
-sayHello('World');
+// import sayHello from './hello';
+// sayHello('World');
 
 /**
  * require style imports
  */
-const {getMovies,addMovies,removeMovie} = require('./api.js');
+const {getMovies,addMovies,removeMovie, editMovie} = require('./api.js');
 
 
-
-// getMovies().then((movies) => {
-//   // console.log("viendo que tiene movies");
-//   // console.log(movies);
-//   // console.log(typeof movies);
-//   console.log('Here are all the movies:');
-//   movies.forEach(({title, rating, id}) => {
-//     console.log(`id#${id} - ${title} - rating: ${rating}`);
-//   });
-// }).catch((error) => {
-//   alert('Oh no! Something went wrong.\nCheck the console for details.')
-//   console.log(error);
-// });
+    refresh();
 
 
-
-    //create the paremeters for addMovies function from api
+    //create the paremeters for  api's functions
     function create_movie(title,rating){
     const movie = {title, rating};
     const options = {
@@ -42,35 +29,27 @@ const {getMovies,addMovies,removeMovie} = require('./api.js');
     return options;
     }
 
-    //create the paremeters for removeMovies function from api
-    function  remove_movie(id) {
-        let url=`/api/movies/+${id}`;
-        const options = {
-            method: 'DELETE'
-        };
-    }
 
     //function to create a div with a movie
     function createReport(movie) {
         var htmlMovie=`<tr><td>+${movie.name}+</td><<td> movie.rating </td></tr>`;
         return htmlMovie;
+    }
 
-}
 
+     function refresh() {
 
- function refresh() {
-
-     getMovies().then((movies) => {
-         console.log('Here are all the movies:');
-         movies.forEach(({title, rating, id}) => {
-             $("#cartelera").append(`<tr class="movie"><td class="id">${id}</td><td>${title}</td><td>rating: ${rating}</td><td><input class="checkDel" type="checkbox"></td></tr><hr>`);
+         getMovies().then((movies) => {
+             console.log('Here are all the movies:');
+             movies.forEach(({title, rating, id}) => {
+                 $("#cartelera").append(`<tr class="movie"><td class="id">${id}</td><td>${title}</td><td>rating: ${rating}</td><td><input class="checkDel" type="checkbox"></td></tr><hr>`);
+             });
+         }).catch((error) => {
+             alert('Oh no! Something went wrong.\nCheck the console for details.')
+             console.log(error);
          });
-     }).catch((error) => {
-         alert('Oh no! Something went wrong.\nCheck the console for details.')
-         console.log(error);
-     });
- }
- refresh()
+     }
+
 
 
 
@@ -119,6 +98,26 @@ const {getMovies,addMovies,removeMovie} = require('./api.js');
         refresh();
 
     });
+
+//this function pass parameters tho the API's function "editMovie" to edit a o
+    function changeMovie () {
+
+        const peli = {title: 'life on Mars', rating: 5};
+        const url = '/api/movies/11';
+        const options = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(peli),
+        };
+        editMovie(url, options);
+        $("#cartelera").html("");
+
+    }
+
+
+
 
 
 

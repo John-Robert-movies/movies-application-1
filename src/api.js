@@ -13,9 +13,13 @@ addMovies:(configuration)=>{
 
 removeMovie:(url,configuration)=>
 {
-    fetch(url, configuration)
+    fetch(url, configuration);
+},
 
-}
+    editMovie:(url,configuration)=>
+    {
+        fetch(url, configuration);
+    }
 
 
 };
