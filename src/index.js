@@ -61,7 +61,7 @@ const {getMovies,addMovies,removeMovie} = require('./api.js');
     getMovies().then((movies) =>{
         console.log('Here are all the movies:');
         movies.forEach(({title, rating, id}) => {
-            $("#cartelera").append(`<tr><td>${id}</td><td>${title}</td><td>rating: ${rating}</td><td><input class="checkDel" type="checkbox"></td></tr><hr>`);
+            $("#cartelera").append(`<tr class="movie"><td class="id">${id}</td><td>${title}</td><td>rating: ${rating}</td><td><input class="checkDel" type="checkbox"></td></tr><hr>`);
         });
     }).catch((error) => {
         alert('Oh no! Something went wrong.\nCheck the console for details.')
@@ -86,10 +86,14 @@ const {getMovies,addMovies,removeMovie} = require('./api.js');
 
     //event listener for a checked check button: get the id from the <tr>
 
-    $(".checkDel").click(function () {
+    $("#cartelera").on('click', '.checkDel', function () {
          // if ($(this).is(':checked')){
            console.log("hi there");
-           // }
+           console.log($(this.siblings()));
+
+
+
+        // }
 
     });
 
